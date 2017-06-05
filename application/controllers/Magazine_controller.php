@@ -8,7 +8,7 @@ class Magazine_controller extends CI_Controller {
 		$this->load->view('HeaderView');
 		$this->load->view('LeftSidebarView');
 		$this->load->view('Homeview');
-	}
+	} 
 
 	function magazine_view()
 	{
