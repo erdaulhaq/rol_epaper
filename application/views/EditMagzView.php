@@ -34,7 +34,8 @@
                                         <input type="file" name="image" class="form-control" placeholder="Image with " required><small>Current image : <?php echo $magz->image; ?></small>
                                          <input type="hidden" name="current_image" value="<?php echo $magz->image ?>">
                                     </div>
-                                    <span class="text-danger"><?php if (isset($error)) echo $error; ?></span>
+                                    <?php if ($this->session->flashdata('error') == TRUE ) { ?>
+                                    <span class="text-danger"><?php echo $this->session->flashdata('error') ?></span><?php } ?>
                                 </div>                                                                
                                 <br>
                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>

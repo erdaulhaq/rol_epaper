@@ -81,6 +81,15 @@ class Magazine_controller extends CI_Controller {
 
 	function edit_magz($id_magazine)
 	{
+
+		if ($this->input->post('image') == '')
+		{
+			$data = array(
+				'title' => $this->input->post('title'),
+				'content' => $this->input->post('content'),
+				'image' =>  $this->input->post('current_image'));
+		}
+
 		$config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'jpg|png';
         $this->load->library('upload', $config);
@@ -90,7 +99,7 @@ class Magazine_controller extends CI_Controller {
         	$data['error'] = $this->upload->display_errors();    
         	echo "<script type='text/javascript'>
                           alert('Edit Magazine Failed !');</script>";
-            
+            $this->session->set_flashdata($data);
 			redirect(base_url('Magazine_controller/edit_magz_page/' . $id_magazine),'refresh');
         }
         else
@@ -100,8 +109,7 @@ class Magazine_controller extends CI_Controller {
         	$data = array(
 			'title' => $this->input->post('title'),
 			'content' => $this->input->post('content'),
-			'image' => $file_name,
-			'date' => date('Y-m-d '));
+			'image' => $file_name);
 
         	$this->Magazine_model->add_magz($data);
 			echo "<script type='text/javascript'>
