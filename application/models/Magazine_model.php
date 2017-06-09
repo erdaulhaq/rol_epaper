@@ -19,6 +19,11 @@
 			return $last_id;
 		}
 
+		function coba($data)
+	    {
+	      $query = $this->db->insert('attachment', $data);
+	    }
+
 		function delete_magz($id_magazine)
 		{
 			$this->db->where('id_magazine', $id_magazine);

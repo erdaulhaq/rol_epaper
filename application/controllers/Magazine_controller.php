@@ -141,6 +141,8 @@ class Magazine_controller extends CI_Controller {
 	function coba($id_magazine)
 	{
 		  $this->load->library('upload');
+
+		  $image_name = $_FILES['image_page']['name'];
   
       //Configure upload.
           $this->upload->initialize(array(
@@ -151,12 +153,28 @@ class Magazine_controller extends CI_Controller {
              //Perform upload.
              if($this->upload->do_upload("image_page")) {
                  $uploaded = $this->upload->data();
+               /*  $file_name[] = $uploaded['file_name'];
+                  echo  $file_name;*/
+                 
+                 foreach ($image_name as $key => $value) {
+                 	//echo $value;
+                 	$data = array(
+                 		'attachment' => $value);
+                 	$this->Magazine_model->coba($data);
+                 }
+                 	
+            
+                 
+                 
+
                  echo '<pre>';
-			   var_export($uploaded);
+			   var_export($this->upload->data('file_name'));
 			   echo '</pre>';
 			             }else{
 			   die('GAGAL UPLOAD');
 			      }
+
+
 	}
 
 	function delete_magz($id_magazine)
