@@ -15,6 +15,8 @@
 		function add_magz($data)
 		{
 			$query = $this->db->insert('magazine', $data);
+			$last_id = $this->db->insert_id();
+			return $last_id;
 		}
 
 		function delete_magz($id_magazine)
@@ -27,5 +29,23 @@
 		{
 			$query = $this->db->get_where('magazine', array('id_magazine' => $id_magazine));
 				return $query->row();
+		}
+
+		function get_magz_detail($id_magazine)
+		{
+			$query = $this->db->get_where('magazine_detail',array('id_magazine' =>  $id_magazine));
+			return $query->result_array();
+		}
+
+		function edit_magz($data,$id_magazine)
+		{
+			$this->db->where('id_magazine', $id_magazine);
+			$this->db->update('magazine',$data);
+		}
+
+		function get_recent_add($id)
+		{
+			$query = $this->db->get_where('magazine', array('id_magazine' => $id ));
+			return $query->row();
 		}
 	}

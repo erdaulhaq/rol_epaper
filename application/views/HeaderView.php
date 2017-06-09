@@ -72,6 +72,11 @@
 
     <!-- Demo Js -->
     <script src="<?php echo base_url(); ?>assets/js/demo.js"></script>
+    
+    <!-- jQuery -->
+    <script src="<?php echo base_url(); ?>assets/jQuery/jquery-2.2.3.min.js"></script>
+
+    
 
     
 

@@ -1,4 +1,5 @@
 <section class="content">
+
         <div class="container-fluid">
             
             
@@ -14,16 +15,23 @@
                         </div>
                         <div class="body">
                             <form action="<?=base_url('Magazine_controller/add_magazine')?>" method="POST" enctype="multipart/form-data" >
-                                <label for="title">Title</label>
+                               <!--  <label for="title">No Edisi</label>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" name="title" class="form-control" placeholder="Title" required>
+                                    </div>
+                                </div> -->
+                                <?php $data = $this->session->flashdata('data'); ?>
+                                <label for="title">Title</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" value="<?php echo $data['title']; ?>" name="title" class="form-control" placeholder="Title" required>
                                     </div>
                                 </div>
                                 <label for="content">Content</label>
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <textarea name="content" rows="3" class="form-control no-resize auto-growth" placeholder="Content" required></textarea>
+                                        <textarea name="content" rows="3" class="form-control no-resize auto-growth" placeholder="Content" required><?php echo $data['title']; ?></textarea>
                                     </div>
                                 </div>
                                 <label for="title">Cover</label>
@@ -32,8 +40,25 @@
                                     <div class="form-line">
                                         <input type="file" name="image" class="form-control" placeholder="Image with " required>
                                     </div>
-                                    <span class="text-danger"><?php if (isset($error)) echo $error; ?></span>
-                                </div>                                                                
+                                    <span class="text-danger"><?php echo $data['error']; ?></span>
+                                </div>
+                                <div class="header">
+                                    <h2>
+                                    <b>Add Page</b>
+                                    </h2>
+                                </div>
+                                <label for="title">Image</label>
+                                <small>(jpg/png extentions)</small>
+                                <div id='target_append' class="form-group">
+                                    <div id = 'template' class="form-line">
+                                        <input type="file" name="image_page[0]" class="form-control ch-image" placeholder="Image with " required>
+
+                                    </div>
+
+                                    <!-- <span class="text-danger"><?php if (isset($error)) echo $error; ?></span> -->
+                                </div>
+                                <button type="button" id="delete_image" class="btn btn-danger ch-button">Hapus Gambar</button>
+                                <button type="button" id="add_image" class="btn btn-warning ch-button" value="">Add Image</button>
                                 <br>
                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
                             </form>
@@ -48,61 +73,27 @@
     </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body align="center">
-<form action="<?=base_url('Magazine_controller/add_news')?>" method="POST">
-<br>
-<b>ADD NEWS</b>
-<br>
-<br>
-<table align="center">
-	<tr>
-		<td>Title</td>
-		<td>:</td>
-		<td><input type="text" placeholder="Title" name="title" required></td>		
-	</tr>
-	<tr>
-		<td>Content</td>
-		<td>:</td>
-		<td><input type="text" placeholder="Content" name="content" required></td>		
-	</tr>
-	<tr>
-		<td>Category</td>
-		<td>:</td>
-		<td>
-			<select name="category">
-			<?php foreach ($cat as $kategori) { ?>
-			
-				<option value="<?php echo $kategori['id_category'] ?>"><?php echo $kategori['name_category'] ?></option>
-				<?php } ?>
-			</select>
-		</td>		
-	</tr>
-	<tr>
-		<td>Image</td>
-		<td>:</td>
-		<td><input type="file" placeholder="Image" name="image"></td>
-	</tr>
-
-	
-</table>
-<button type="submit">Submit</button>
-</form>
-</body>
-</html> -->
+<script>
+$(document).ready(function () {
+var counter = 1;
+    $("#add_image").click(function () {
+        var new_elem = $("#template").clone()
+                .appendTo("#target_append")
+                .show().attr("id", "template" + counter);
+                new_elem.find(".ch-image").attr("name","image[" + counter +"]");
+        counter ++;
+    });
+    $("#delete_image").click(function () {
+        if(counter == 1){
+            alert("Tidak bisa hapus lagi");
+            return false;
+        }
+            counter --;
+            $("#template" + counter).remove();    
+        
+    });
+    /*$(document).on('click', '.btn-danger', function() {
+        $(this).parent().parent().parent().parent().parent().parent().remove();
+    });*/
+});
+</script>

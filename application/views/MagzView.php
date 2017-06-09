@@ -33,12 +33,12 @@
                                         <td><?php echo $m['content'] ?></td>
                                         <td><?php echo $m['date'] ?></td>
                                         <td><?php echo $m['image'] ?></td>
-        <td>
-            <a href="<?php echo base_url();?>Magazine_controller/edit_magz_page/<?php echo $m['id_magazine']; ?>"><i class="material-icons">update</i></a>&nbsp &nbsp
-            <a href="<?php echo base_url();?>Magazine_controller/delete_magz/<?php echo $m['id_magazine']; ?>" onclick="return confirm('Are you sure to delete this ?')" ><i class="material-icons">delete</i></a>
-        </td>
+                                        <td>
+                                            <a href="<?php echo base_url();?>Magazine_controller/edit_magz_page/<?php echo $m['id_magazine']; ?>"><i class="material-icons">update</i></a>&nbsp &nbsp
+                                            <a href="<?php echo base_url();?>Magazine_controller/delete_magz/<?php echo $m['id_magazine']; ?>" onclick="return confirm('Are you sure to delete this ?')" ><i class="material-icons">delete</i></a>
+                                        </td>
                                     </tr>
-                                <?php } ?>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>

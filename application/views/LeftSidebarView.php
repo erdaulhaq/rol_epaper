@@ -32,11 +32,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
+                        <!-- <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
                             <span>View Data</span>
                         </a>
-                        <ul class="ml-menu">
+ -->                        <a href="javascript:void(0);">
+                            <i class="material-icons">view_list</i>
+                            <span>View Data</span>
+                        </a>
+                        <ul >
                             <li>
                                 <a href="<?php echo base_url();?>Magazine_controller/magazine_view/">Magazine</a>
                             </li>
@@ -47,11 +51,11 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
+                        <a href="javascript:void(0);">
                             <i class="material-icons">assignment</i>
                             <span>Add Data</span>
                         </a>
-                        <ul class="ml-menu">
+                        <ul>
                             <li>
                                 <a href="<?php echo base_url();?>Magazine_controller/add_magz_page/">Add Magazine</a>
                             </li>
